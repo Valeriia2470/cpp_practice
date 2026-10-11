@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility>
 #include "String.h"
 
 int main() {
@@ -20,5 +21,13 @@ int main() {
     std::cout << z.size() << " [" << z.c_str() << "]\n";  
     z = z;
     std::cout << z.size() << " [" << z.c_str() << "]\n";  
+    String l("hi");
+    String w = std::move(l);   
+    std::cout << w.size() << " [" << w.c_str() << "]\n";   
+
+    String v;
+    String p("abc");
+    v = std::move(p);          
+    std::cout << v.size() << " [" << v.c_str() << "]\n";   
     return 0;
 }

@@ -53,3 +53,21 @@ String& String::operator = (const String& other) {
     size_ = other.size_;
     return *this;
 }
+String::String(String&& other) noexcept{
+    data_ = other.data_;
+    size_ = other.size_;
+    other.data_ = nullptr;
+    other.size_ = 0;
+}
+String& String::operator = (String&& other) noexcept {
+    if(this == &other) {
+        return *this;
+    }
+    delete[] data_;
+    data_ = other.data_;
+    size_ = other.size_;
+    other.data_ = nullptr;
+    other.size_ = 0;
+    return *this;
+
+}

@@ -40,3 +40,16 @@ String::String(const String& other) {
     }
     size_ = other.size_;
 }
+String& String::operator = (const String& other) {
+    if(this == &other) {
+        return *this;
+    }
+    char* new_data = new char[other.size_ + 1];
+    for(size_t i = 0; i < other.size_ + 1; i++ ) {
+        new_data[i] = other.data_[i];
+    }
+    delete[] data_;
+    data_ = new_data;
+    size_ = other.size_;
+    return *this;
+}

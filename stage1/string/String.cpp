@@ -1,5 +1,6 @@
 #include "String.h"
 #include <cstring>
+#include <ostream>
 String::String() {
     data_ = new char[1]; 
     data_[0] = '\0';
@@ -107,4 +108,17 @@ void String::append(const String& other) {
     delete[] data_;
     data_ = new_data;
     size_ =  other.size_ + size_;
+}
+String& String::operator+=(const String& other) {
+    String::append(other);
+    return *this;
+}
+String operator+(const String& a, const String& b) {
+    String result = a;
+    result += b;
+    return result; 
+}
+std::ostream& operator<<(std::ostream& out, const String& s) {
+    out << s.c_str();
+    return out;
 }

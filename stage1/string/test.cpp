@@ -28,6 +28,10 @@ int main() {
     String v;
     String p("abc");
     v = std::move(p);          
-    std::cout << v.size() << " [" << v.c_str() << "]\n";   
+    std::cout << v.size() << " [" << v.c_str() << "]\n";
+    String n("abc");
+    std::cout << (n == String("abc")) << (n == String("abd")) << (n == String("ab")) << "\n";   // 100
+    n.clear();
+    std::cout << n.size() << n.empty() << "[" << n.c_str() << "]\n";    
     return 0;
 }

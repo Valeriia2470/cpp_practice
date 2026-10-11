@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include <iosfwd>
 
 class String {
 public:
@@ -14,8 +15,16 @@ public:
     size_t size() const;
     bool empty() const;
     const char* c_str() const;
+    char& operator[] (size_t i);
+    const char& operator[] (size_t i) const;
+    bool operator == (const String& other) const;
+    String& operator+=(const String& other);
+    void append(const String& other);
+    void clear();
 
 private:
     char* data_;
     size_t size_;
 };
+std::ostream& operator<<(std::ostream& out, const String& s);
+String operator+(const String& a, const String& b);

@@ -71,3 +71,28 @@ String& String::operator = (String&& other) noexcept {
     return *this;
 
 }
+char& String::operator[](size_t i) { // return data_[i]
+    return data_[i];
+}
+const char& String::operator[](size_t i) const { // return data_[i]
+    return data_[i];
+}
+bool String::operator==(const String& other) const {
+    if(size_ != other.size_) {
+        return false;
+    }
+    for(size_t i = 0; i < size_; i++) {
+        if(data_[i] != other.data_[i] ) {
+            return false;
+        }
+    }
+    return true;
+
+}
+void String::clear() {
+    delete[] data_;
+    size_ = 0;
+    data_ = new char[1];
+    data_[0] = '\0';
+
+}

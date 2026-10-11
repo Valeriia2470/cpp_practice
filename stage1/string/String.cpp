@@ -96,3 +96,15 @@ void String::clear() {
     data_[0] = '\0';
 
 }
+void String::append(const String& other) {
+    char* new_data = new char[size_ + other.size_ + 1];
+    for(size_t i = 0; i < size_; i++) {
+        new_data[i] = *(data_ + i);
+    }
+    for(size_t i = size_; i < (size_ + other.size_ + 1); i++) {
+        new_data[i] = other.data_ [i - size_];
+    }
+    delete[] data_;
+    data_ = new_data;
+    size_ =  other.size_ + size_;
+}

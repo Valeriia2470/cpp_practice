@@ -32,6 +32,14 @@ int main() {
     String n("abc");
     std::cout << (n == String("abc")) << (n == String("abd")) << (n == String("ab")) << "\n";   // 100
     n.clear();
-    std::cout << n.size() << n.empty() << "[" << n.c_str() << "]\n";    
+    std::cout << n.size() << n.empty() << "[" << n.c_str() << "]\n"; 
+    String s("ab");
+    s.append(String("cd"));
+    std::cout << s.size() << " " << s.c_str() << "\n";   // 4 abcd
+    s.append(s);
+    std::cout << s.size() << " " << s.c_str() << "\n";   // 8 abcdabcd
+    String e;
+    e.append(String("x"));
+    std::cout << e.size() << " " << e.c_str() << "\n";   // 1 x   
     return 0;
 }

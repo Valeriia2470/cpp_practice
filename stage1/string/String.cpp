@@ -33,3 +33,10 @@ String::String(const char* s) {
     }
     
 }
+String::String(const String& other) {
+    data_ = new char[other.size_ +1];
+    for(size_t i = 0; i < other.size_ + 1; i++ ) {
+        data_[i] = other.data_[i];
+    }
+    size_ = other.size_;
+}
